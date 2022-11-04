@@ -1,0 +1,39 @@
+
+  "project_info": {
+    "project_number": "318955391835",
+    "project_id": "tragedytracker",
+    "storage_bucket": "tragedytracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318955391835:android:2193b7e6cfcc7bb5c3e87e",
+        "android_client_info": {
+          "package_name": "com.example.tragedytracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318955391835-oo3418qutat5pd2o11s224ktv7jfuebn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdTAhyTfSA6sQ2xlASem5Lhqgr2qbcL3s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318955391835-oo3418qutat5pd2o11s224ktv7jfuebn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

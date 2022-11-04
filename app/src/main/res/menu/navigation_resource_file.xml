@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/Earthquake"
+            android:title="Earthquake"
+            android:icon="@drawable/earthquake"/>
+
+        <item
+            android:id="@+id/Drought"
+            android:title="Drought"
+            android:icon="@drawable/drought" />
+        <item
+            android:id="@+id/Cyclone"
+            android:title="Cyclone"
+            android:icon="@drawable/cyclone"/>
+        <item
+            android:id="@+id/Flood"
+            android:title="Flood"
+            android:icon="@drawable/flood" />
+        <item
+            android:id="@+id/landslide"
+            android:title="Land Slide"
+            android:icon="@drawable/landslide" />
+
+        <item
+            android:id="@+id/myProfile"
+            android:title="My Profile"
+            android:icon="@drawable/forest_fire" />
+    </group>
+</menu>

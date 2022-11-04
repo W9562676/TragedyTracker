@@ -1,0 +1,76 @@
+<resources>
+    <string name="app_name">TragedyTracker</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <!-- Settings Menu Item [CHAR LIMIT=NONE] -->
+
+
+
+    <string name="loading">Loading ...</string>
+    <!-- Settings Menu Item [CHAR LIMIT=NONE] -->
+    <string name="settings_menu_item">Settings</string>
+    <!--Toast Message Displaye-->
+    <string name="Correct_start_Date">Enter the Correct Start Date format(YYYY/MM/DD)</string>
+    <string name="Correct_End_Date">Enter the Correct End Date format(YYYY/MM/DD)</string>
+    <string name="Correct_Start_End_Date">Enter the Correct Start Date and End Date format(YYYY/MM/DD)</string>
+    <!-- Settings Activity Title [CHAR LIMIT=NONE] -->
+    <string name="settings_title">Earthquake Settings</string>
+    <!-- Strings For Minimum Magnitude Preference [CHAR LIMIT=30] -->
+    <string name="settings_min_magnitude_label">Minimum Magnitude</string>
+    <string name="settings_min_magnitude_key" translatable="false">min_magnitude</string>
+    <string name="settings_min_magnitude_default" translatable="false">6</string>
+
+    <string name="settings_order_by_label">Order By</string>
+    <string name="settings_order_by_key" translatable="false">order_by</string>
+    <string name="settings_order_by_default" translatable="false">@string/settings_order_by_magnitude_value</string>
+
+    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_magnitude_label">Magnitude</string>
+    <string name="settings_order_by_magnitude_value" translatable="false">magnitude</string>
+    <!-- label for maximum magnitudes-->
+    <string name="setting_max_magnitude_label">Maximum Magnitude</string>
+    <string name="setting_max_magnitude_key" translatable="false">max_magnitude</string>
+    <string name="setting_max_magnitude_default" translatable="false">10</string>
+    <!--label for total number of earthqaukes needed -->
+    <string name="settings_number_of_eaqthquake_label">Number of earthquakes to be displayed</string>
+    <string name="settings_number_of_earthquakes_default" translatable="false">10</string>
+    <string name="settings_number_of_earthquake_key" translatable="false">Number_of_earthquake</string>
+
+    <string name="settings_start_date_label">Start Date</string>
+    <string name="settings_start_date_default" translatable="false">2014/01/02</string>
+    <string name="settings_start_date_key" translatable="false">start_date</string>
+
+
+    <string name="settings_end_date_label">End Date</string>
+    <string name="settings_end_date_default" translatable="false">2020/06/21</string>
+    <string name="settings_end_date_key" translatable="false">end_date</string>
+
+
+    <!-- Label for order-by most recent option [CHAR LIMIT=20] -->
+    <string name="settings_order_by_most_recent_label">Most Recent</string>
+    <string name="settings_order_by_most_recent_value" translatable="false">time</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="earthqauke">Earthqauke</string>
+    <string name="drought">Drought</string>
+    <string name="extratropical_cyclone">Extratropical Cyclone</string>
+    <string name="flood">Flood</string>
+    <string name="land_slide">Land Slide</string>
+    <string name="tropical_cyclone">Tropical Cyclone</string>
+    <string name="technological_disaster">Technological Disaster</string>
+    <string name="tsunami">Tsunami</string>
+    <string name="volcano">Volcano</string>
+    <string name="wild_fire">Wild Fire</string>
+    <string name="there_is_no_data_to_display">There is no data to display !!</string>
+    <string name="please_check_your_internet_connection">Please check your internet connection !!</string>
+    <string name="there_is_no_earthquake_data_to_be_displayed">There is no EarthQuake Data to be displayed</string>
+    <string name="number_of_entries">number_of_entries</string>
+    <string name="country_name">country_name</string>
+    <string name="enter_country_name">Please Enter the country name</string>
+    <string name="include_country">include_country</string>
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="earthquake">Earthquake</string>
+
+</resources>
