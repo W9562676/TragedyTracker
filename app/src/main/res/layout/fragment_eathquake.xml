@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Locate"
-        android:background="@color/app_color"
+        android:background="@color/lower_682929"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="@dimen/_15sdp"

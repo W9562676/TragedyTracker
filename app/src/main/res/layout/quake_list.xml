@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:id="@+id/quake_front_list"
     android:layout_width="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/splasg_backgrnd"
     android:layout_height="88dp">
 
     <TextView
@@ -21,7 +21,7 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_weight="7"
-        android:background="@color/white"
+        android:background="@drawable/splasg_backgrnd"
         android:orientation="vertical"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp">
@@ -33,7 +33,7 @@
             android:layout_weight="5"
             android:ellipsize="end"
             android:textAllCaps="true"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:maxLines="1"
             android:textSize="12sp"
             android:gravity="bottom"
@@ -50,7 +50,7 @@
             android:maxLines="2"
             android:textStyle="bold"
             android:textSize="16sp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:layout_weight="5"
             android:layout_gravity="start"/>
     </LinearLayout>
@@ -67,7 +67,7 @@
             android:id="@+id/quakeDate"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:layout_weight="1"
             android:textSize="12sp"
             android:gravity="end"
@@ -77,7 +77,7 @@
             android:id="@+id/quakeTime"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:layout_weight="1"
             android:textSize="12sp"
             android:gravity="end"/>
