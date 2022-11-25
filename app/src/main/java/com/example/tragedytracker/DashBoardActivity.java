@@ -158,9 +158,9 @@ public class DashBoardActivity extends AppCompatActivity implements LoaderManage
                 tLoader = tLoaderManager.getLoader(4);
                 tLoaderManager.restartLoader(4,null,this);
                 break;
-//            case R.id.myProfile:
-//                tFragment = new profileFragement();
-//                break;
+            case R.id.myProfile:
+                tFragment = new profileFragement();
+                break;
             default:
                 tFragment = new EathquakeFragment();
                 break;

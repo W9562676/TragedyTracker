@@ -9,12 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="app_color">#00B0FF</color>
     <color name="color_682929">#A52B2B</color>
-    <color name="lower_682929">#501515</color>
-    <color name="mid_682929">#8E3636</color>
-    <color name="upper_682929">#BF6464</color>
-    <color name="splash_lower_682929">#451616</color>
-    <color name="splash_mid_682929">#6E2D2D</color>
-    <color name="splash_upper_682929">#704040</color>
+    <color name="lower_682929">#503F15</color>
+    <color name="mid_682929">#8E6336</color>
+    <color name="upper_682929">#BF9664</color>
+    <color name="splash_lower_682929">#453416</color>
+    <color name="splash_mid_682929">#6E542D</color>
+    <color name="splash_upper_682929">#705A40</color>
     <color name="edit_682929">#EFD6D6</color>
     <color name="color_e2e2e2">#E2E2E2</color>
 

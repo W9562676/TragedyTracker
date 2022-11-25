@@ -41,7 +41,7 @@ public class LoginFragment extends Fragment {
         Intent tSign = AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(tProviders)
-                .setLogo(R.drawable.drought)
+                .setLogo(R.drawable.tragedy_logo)
                 .setAlwaysShowSignInMethodScreen(true)
                 .setIsSmartLockEnabled(false)
                 .build();

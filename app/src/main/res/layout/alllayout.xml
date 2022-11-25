@@ -3,8 +3,8 @@
     android:orientation="horizontal"
     android:id="@+id/quake_front_list"
     android:layout_width="match_parent"
-    android:background="@drawable/splasg_backgrnd"
-    android:layout_height="88dp">
+    android:layout_height="88dp"
+    android:layout_marginBottom="5dp">
 
     <TextView
         android:id = "@+id/quakeMagnitude"
@@ -33,8 +33,7 @@
             android:layout_height="match_parent"
             android:ellipsize="end"
             android:textAllCaps="true"
-            android:background="@drawable/splasg_backgrnd"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="@dimen/_10sdp"
             android:gravity="center"
             android:paddingLeft="3dp"
