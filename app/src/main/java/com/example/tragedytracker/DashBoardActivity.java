@@ -203,9 +203,11 @@ public class DashBoardActivity extends AppCompatActivity implements LoaderManage
     @NonNull
     @Override
     public Loader<ArrayList<ArrayList<EarthquakeEntries>>> onCreateLoader(int id, @Nullable Bundle args) {
-        tProgressDialog = new ProgressDialog(DashBoardActivity.this);
+        tProgressDialog = new ProgressDialog(this);
+        tProgressDialog.setTitle("Please Wait ...");
+        tProgressDialog.setCancelable(false);
+        tProgressDialog.setMessage("Fetching Data ...");
         tProgressDialog.show();
-        tProgressDialog.setContentView(R.layout.spinner);
         DateTimeFormatter tDtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime tNow = LocalDateTime.now();
         System.out.println(tDtf.format(tNow));
@@ -254,10 +256,23 @@ public class DashBoardActivity extends AppCompatActivity implements LoaderManage
 
             if(tRes1&&tRes2){
                 tNumberOfEntries = ""+50;
-                if(tSourceID == 0){
+                if(tSourceID == 0 ){
                     tSourceID = 1;
                 }
-                tGeneralUrl = "https://api.reliefweb.int/v1/disasters?appname=apidocc&profile=list&preset=latest&slim=1&query[value]=("+tType.get(tSourceID-1)+")%20AND%20(date.created%3A%3E%3D"+tStartDate+"%20OR%20date.created%3A%3C"+tEndDate+")&limit="+tNumberOfEntries;
+
+                try{
+                    tGeneralUrl = "https://api.reliefweb.int/v1/disasters?appname=apidocc&profile=list&preset=latest&slim=1&query[value]=("+tType.get(tSourceID-1)+")%20AND%20(date.created%3A%3E%3D"+tStartDate+"%20OR%20date.created%3A%3C"+tEndDate+")&limit="+tNumberOfEntries;
+                }catch (Exception e){
+                    tType = new ArrayList<>();
+                    tType.add("drought");
+                    tType.add("extratropical");
+                    tType.add("flood");
+                    tType.add("land");
+                    tType.add("tsunami");
+                    tType.add("volcano");
+                    tType.add("wild");
+                    tGeneralUrl = "https://api.reliefweb.int/v1/disasters?appname=apidocc&profile=list&preset=latest&slim=1&query[value]=("+tType.get(0)+")%20AND%20(date.created%3A%3E%3D"+tStartDate+"%20OR%20date.created%3A%3C"+tEndDate+")&limit="+tNumberOfEntries;
+                }
             }else{
                 tEndDate = tDtf.format(tNow);
                 tGeneralUrl = "https://api.reliefweb.int/v1/disasters?appname=apidocc&profile=list&preset=latest&slim=1&query[value]=("+tType.get(tSourceID-1)+")%20AND%20(date.created%3A%3E%3D2009-08-05%20OR%20date.created%3A%3C2021-08-13)&limit="+tNumberOfEntries;
@@ -276,7 +291,6 @@ public class DashBoardActivity extends AppCompatActivity implements LoaderManage
         if (tProgressDialog != null && tProgressDialog.isShowing()) {
             tProgressDialog.dismiss();
         }
-//            Log.e("Status - entries",""+data.get(0).size());
 
         if(tSourceID == 0){
             if(tData.size()>0){

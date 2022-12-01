@@ -77,10 +77,10 @@ public class EarthquakeAdapter extends RecyclerView.Adapter<EarthquakeAdapter.Vi
         }
         tMagnitudeColor.setColor(tMagnitudeBackgroundColor);
         holder.tQuakemag.setText(tMagnitudeFormat.format(tEntry.getMagnitude()));
-        holder.tQuakeloc.setText(tEntry.getLocation());
-        holder.tQuakerange.setText(tEntry.getRange());
-        holder.tQuakedate.setText(""+tEntry.getDate());
-        holder.tQuaketime.setText(tEntry.getTime());
+        holder.tQuakeloc.setText(tEntry.getLocation().trim());
+        holder.tQuakerange.setText(tEntry.getRange().trim());
+        holder.tQuakedate.setText(""+tEntry.getDate().trim());
+        holder.tQuaketime.setText(tEntry.getTime().trim());
 
     }
 

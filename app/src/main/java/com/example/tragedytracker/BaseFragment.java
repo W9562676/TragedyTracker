@@ -17,9 +17,6 @@ public class BaseFragment extends Fragment {
         FragmentManager tManager = getActivity().getSupportFragmentManager();
         FragmentTransaction tTransaction = tManager.beginTransaction();
         tTransaction.replace(R.id.mainframe, fragment);
-        if (add) {
-            tTransaction.addToBackStack(null);
-        }
         tTransaction.commit();
     }
 

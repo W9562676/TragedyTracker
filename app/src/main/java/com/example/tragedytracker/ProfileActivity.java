@@ -1,26 +1,20 @@
 package com.example.tragedytracker;
 
-import static android.app.Activity.RESULT_OK;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -41,7 +35,8 @@ import java.io.ByteArrayOutputStream;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class profileFragement extends BaseFragment {
+public class ProfileActivity extends AppCompatActivity {
+
     protected CircleImageView tImage;
     protected EditText tDisplayName;
     protected AppCompatButton tUpdateProfile,tLogoutButton,deleteProfile;
@@ -52,25 +47,23 @@ public class profileFragement extends BaseFragment {
     ProgressDialog progressDialog;
 
 
-    public profileFragement() {
-        // Required empty public constructor
-    }
-
     @Override
-    public View onCreateView(LayoutInflater tInflater, ViewGroup tContainer,
-                             Bundle savedInstanceState) {
-        tRootView = tInflater.inflate(R.layout.fragment_profile_fragement, tContainer, false);
-        tImage =  tRootView.findViewById(R.id.profile_image);
-        tDisplayName =   tRootView.findViewById(R.id.displayNameEditText);
-        tUpdateProfile =   tRootView.findViewById(R.id.updateProfileButton);
-        tUpdateProfileProgress =  tRootView.findViewById(R.id.upadtaProfileProgressBar);
-        deleteProfile = tRootView.findViewById(R.id.delete);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_profile_fragement);
+
+
+        tImage =  findViewById(R.id.profile_image);
+        tDisplayName =   findViewById(R.id.displayNameEditText);
+        tUpdateProfile =   findViewById(R.id.updateProfileButton);
+        tUpdateProfileProgress =  findViewById(R.id.upadtaProfileProgressBar);
+        deleteProfile = findViewById(R.id.delete);
 
         FirebaseUser tUser = FirebaseAuth.getInstance().getCurrentUser();
         if(tUser!= null){
             tDisplayName.setText(tUser.getDisplayName());
             if(tUser.getPhotoUrl() != null){
-                Glide.with(requireActivity())
+                Glide.with(this)
                         .load(tUser.getPhotoUrl())
                         .into(tImage);
             }
@@ -87,10 +80,12 @@ public class profileFragement extends BaseFragment {
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                FragmentManager tManager = getActivity().getSupportFragmentManager();
-                                FragmentTransaction tTransaction = tManager.beginTransaction();
-                                tTransaction.replace(R.id.myframeLayout,new profileFragement());
-                                tTransaction.commit();
+                                startActivity(new Intent(ProfileActivity.this,ProfileActivity.class));
+                                ProfileActivity.this.finish();
+//                                FragmentManager tManager = ProfileActivity.this.getSupportFragmentManager();
+//                                FragmentTransaction tTransaction = tManager.beginTransaction();
+//                                tTransaction.replace(R.id.myframeLayout,new profileFragement());
+//                                tTransaction.commit();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -116,53 +111,44 @@ public class profileFragement extends BaseFragment {
                 updateProfileImage();
             }
         });
-        tLogoutButton = tRootView.findViewById(R.id.logout);
+        tLogoutButton = findViewById(R.id.logout);
 
         tLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AuthUI.getInstance().signOut(getActivity());
-                startActivity(new Intent(getActivity(), MainActivity.class));
-                getActivity().finish();
+                AuthUI.getInstance().signOut(ProfileActivity.this);
+                startActivity(new Intent(ProfileActivity.this, MainActivity.class));
+                ProfileActivity.this.finish();
             }
         });
-        return tRootView;
     }
 
     @Override
-    public void onActivityResult(int tRequestCode, int tResultCode, @Nullable Intent tData) {
-        super.onActivityResult(tRequestCode, tResultCode, tData);
+    protected void onActivityResult(int tRequestCode, int tResultCode, @Nullable Intent data) {
+        super.onActivityResult(tRequestCode, tResultCode, data);
         if(tRequestCode == 1234){
             if(tResultCode == RESULT_OK){
-                Log.e("stage 1 ","success");
-                Bitmap tCurrImage = (Bitmap)tData.getExtras().get("data");
+                Bitmap tCurrImage = (Bitmap)data.getExtras().get("data");
                 tImage.setImageBitmap(tCurrImage);
                 uploadImage(tCurrImage);
             }
         }
-        FragmentManager tManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction tTransaction = tManager.beginTransaction();
-        tTransaction.replace(R.id.myframeLayout,new profileFragement());
-        tTransaction.commit();
-
     }
-
 
     protected void  updateProfileImage() {
         Intent tCapture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if(tCapture.resolveActivity(getActivity().getPackageManager()) != null){
+        if(tCapture.resolveActivity(ProfileActivity.this.getPackageManager()) != null){
             startActivityForResult(tCapture,1234);
-            FragmentManager tManager = getActivity().getSupportFragmentManager();
-            FragmentTransaction tTransaction = tManager.beginTransaction();
-            tTransaction.replace(R.id.myframeLayout,new profileFragement());
-            tTransaction.commit();
         }
-
+        FragmentManager tManager = ProfileActivity.this.getSupportFragmentManager();
+        FragmentTransaction tTransaction = tManager.beginTransaction();
+        tTransaction.replace(R.id.myframeLayout,new profileFragement());
+        tTransaction.commit();
     }
 
     protected void  uploadImage(Bitmap tImage){
-            progressDialog
-                = new ProgressDialog(getActivity());
+        progressDialog
+                = new ProgressDialog(ProfileActivity.this);
         progressDialog.setTitle("Uploading...");
         progressDialog.show();
         String tUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -171,7 +157,6 @@ public class profileFragement extends BaseFragment {
         StorageReference tCurrReference =  FirebaseStorage.getInstance().getReference()
                 .child("profile Images")
                 .child(tUserId+".jpeg");
-        Log.e("stage 2 ","success");
         tCurrReference.putBytes(tByteArray.toByteArray())
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -183,7 +168,6 @@ public class profileFragement extends BaseFragment {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.e("stage 2 ","Failure");
                     }
                 }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -233,7 +217,7 @@ public class profileFragement extends BaseFragment {
                     public void onFailure(@NonNull Exception e) {
                     }
                 });
-        }
+    }
 
 
     protected void updatingProfile(){
@@ -246,13 +230,13 @@ public class profileFragement extends BaseFragment {
             @Override
             public void onSuccess(Void unused) {
                 tUpdateProfile.setVisibility(View.VISIBLE);
-                Toast.makeText(getActivity(),"Profile Updated",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProfileActivity.this,"Profile Updated",Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        tUpdateProfile.setVisibility(View.VISIBLE);
-                    }
-                });
-        }
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                tUpdateProfile.setVisibility(View.VISIBLE);
+            }
+        });
+    }
 }

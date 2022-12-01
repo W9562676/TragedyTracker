@@ -29,9 +29,10 @@ public class MapsFragment extends Fragment {
 //            googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
 //            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
             for(int j=0;j<tQuakeEntriesList.size();j++){
+                Log.e("hello",tQuakeEntriesList.toString());
                 EarthquakeEntries tCurrloc = tQuakeEntriesList.get(j);
                 LatLng tSydney = new LatLng(tCurrloc.getLongitude(),tCurrloc.getLattitude());
-                tGoogleMap.addMarker(new MarkerOptions().position(tSydney));
+                tGoogleMap.addMarker(new MarkerOptions().position(tSydney).title(tCurrloc.getLocation()));
                 Log.e("status",tCurrloc.getLattitude()+" "+tCurrloc.getLongitude()+" "+tCurrloc.getName());
             }
         }

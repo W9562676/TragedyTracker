@@ -54,7 +54,6 @@
         android:padding="@dimen/_10sdp"
         android:paddingStart="@dimen/_18sdp"
         android:paddingEnd="@dimen/_20sdp"
-        android:editable="false"
         android:hint="User Name"
         android:textSize="@dimen/_13sdp"
         app:layout_constraintEnd_toEndOf="@id/profile_image"
@@ -73,21 +72,35 @@
         app:layout_constraintTop_toBottomOf="@id/displayNameEditText" />
 
 
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/updateProfileButton"
         android:layout_width="287dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginTop="200dp"
         android:layout_marginEnd="@dimen/_20sdp"
         android:background="@drawable/logout_red_bg"
         android:text="Update Profile"
-        android:layout_marginBottom="@dimen/_30sdp"
+        android:textAllCaps="false"
+        android:textColor="@color/lower_682929"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintBottom_toTopOf="@+id/delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/delete"
+        android:layout_width="287dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/logout_red_bg"
+        android:text="Delete Profile Picture"
         android:textAllCaps="false"
         android:textColor="@color/lower_682929"
         android:textSize="@dimen/_12sdp"
-        app:layout_constraintTop_toBottomOf="@id/displayNameEditText"
+        app:layout_constraintBottom_toTopOf="@+id/logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -95,15 +108,15 @@
         android:id="@+id/logout"
         android:layout_width="287dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
         android:background="@drawable/logout_red_bg"
         android:text="Logout"
+        android:layout_marginBottom="@dimen/_15sdp"
         android:textAllCaps="false"
         android:textColor="@color/lower_682929"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/updateProfileButton" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <ProgressBar

@@ -1,16 +1,23 @@
 package com.example.tragedytracker;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Arrays;
+import java.util.List;
 
 
 public class SplashFragment extends BaseFragment {
@@ -33,8 +40,8 @@ public class SplashFragment extends BaseFragment {
 //                    Sleeping the system for loading
                     sleep(5000);
                 }catch(Exception e){
-                }
 
+                }
                 finally {
 //                   Checking the weather the user had logged in the application or not.
                     if(FirebaseAuth.getInstance().getCurrentUser() != null){
@@ -42,12 +49,39 @@ public class SplashFragment extends BaseFragment {
                         DashboardActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(DashboardActivity);
                     }else{
-//                       launching the login fragment if the user is new to the app
-                        launchFragment(new LoginFragment(),false);
+                        List<AuthUI.IdpConfig> tProviders = Arrays.asList(
+                                new AuthUI.IdpConfig.GoogleBuilder().build(),
+                                new AuthUI.IdpConfig.EmailBuilder().build()
+                        );
+                        Intent tSign = AuthUI.getInstance()
+                                .createSignInIntentBuilder()
+                                .setAvailableProviders(tProviders)
+                                .setLogo(R.drawable.tragedy_logo)
+                                .setAlwaysShowSignInMethodScreen(true)
+                                .setIsSmartLockEnabled(false)
+                                .build();
+                        startActivityForResult(tSign,00001);
                     }
                 }
             }
         }.start();
         return tRootView;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 00001){
+            if(resultCode == Activity.RESULT_OK){
+                FirebaseUser tUser = FirebaseAuth.getInstance().getCurrentUser();
+                if(tUser.getMetadata().getCreationTimestamp() <= tUser.getMetadata().getLastSignInTimestamp() && tUser.getMetadata().getCreationTimestamp()+10 >= tUser.getMetadata().getLastSignInTimestamp()){
+                }
+                else{
+                }
+                startActivity(new Intent(getActivity(), DashBoardActivity.class));
+            }
+            else{
+            }
+        }
     }
 }
