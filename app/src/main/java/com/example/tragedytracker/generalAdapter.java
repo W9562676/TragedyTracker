@@ -26,9 +26,9 @@ public class generalAdapter extends RecyclerView.Adapter<generalAdapter.ViewHold
     }
     @NonNull
     @Override
-    public generalAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.alllayout,parent,false);
-        return new generalAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.example.tragedytracker;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.loader.content.AsyncTaskLoader;
 

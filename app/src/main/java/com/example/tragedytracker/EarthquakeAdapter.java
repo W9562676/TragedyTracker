@@ -8,14 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.security.PublicKey;
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -31,13 +29,13 @@ public class EarthquakeAdapter extends RecyclerView.Adapter<EarthquakeAdapter.Vi
 
     @NonNull
     @Override
-    public EarthquakeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View tView = LayoutInflater.from(parent.getContext()).inflate(R.layout.quake_list,parent,false);
         return new ViewHolder(tView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull EarthquakeAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         EarthquakeEntries tEntry = tList.get(position);
         double tMagnitude = tEntry.getMagnitude();
         DecimalFormat tMagnitudeFormat = new DecimalFormat("0.0");
